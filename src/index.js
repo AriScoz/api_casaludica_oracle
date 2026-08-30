@@ -5,6 +5,7 @@ import { verifyToken } from "./middlewares/auth.middleware.js";
 import { PORT } from './config/config.js'
 import routeUsuarios from "./routes/route.usuarios.js";
 import routeBanner from "./routes/route.banner.js";
+import routeFranquias from "./routes/route.franquias.js";
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use((request, response, next) => {
 app.use(routeLogin);
 app.use(routeUsuarios);
 app.use(routeBanner);
+app.use(routeFranquias);
 
 app.listen(PORT, () => {
     console.log("API Casa Ludica rodando na porta:", PORT);

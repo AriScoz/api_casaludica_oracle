@@ -13,7 +13,9 @@ app.use(express.json());
 
 const origensPermitidas = [
     'http://localhost:5173',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://casaludicafranquia.com.br',
+    'https://www.casaludicafranquia.com.br'
 ];
 
 app.use(cors({

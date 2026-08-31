@@ -6,6 +6,7 @@ import { PORT } from './config/config.js'
 import routeUsuarios from "./routes/route.usuarios.js";
 import routeBanner from "./routes/route.banner.js";
 import routeFranquias from "./routes/route.franquias.js";
+import routeDocumentos from "./routes/route.documentos.js";
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use(routeLogin);
 app.use(routeUsuarios);
 app.use(routeBanner);
 app.use(routeFranquias);
+app.use(routeDocumentos);
 
 app.listen(PORT, () => {
     console.log("API Casa Ludica rodando na porta:", PORT);

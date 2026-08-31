@@ -146,4 +146,5 @@ function ExcluirDocumento(request, response) {
     });
 }
 
+
 export default { UploadDocumento, ListarDocumentos, BaixarDocumento, ExcluirDocumento };

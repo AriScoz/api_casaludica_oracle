@@ -137,4 +137,18 @@ function AlternarStatusFranquia(request, response) {
         response.status(200).json({ sucesso: true });
     });
 }
-export default { ListarFranquias, ListarTipos, CriarFranquia, ObterFranquia, AtualizarFranquia, AlternarStatusFranquia };
+function ListarAniversariantes(request, response) {
+    const mes = parseInt(request.query.mes) || (new Date().getMonth() + 1);
+
+    if (mes < 1 || mes > 12) {
+        return response.status(400).json({ error: 'Mês inválido' });
+    }
+
+    modelFranquias.ListarAniversariantes(mes, function (err, franquias) {
+        if (err) {
+            return response.status(500).json({ error: 'Erro ao buscar aniversariantes' });
+        }
+        response.status(200).json(franquias);
+    });
+}
+export default { ListarFranquias, ListarTipos, CriarFranquia, ObterFranquia, AtualizarFranquia, AlternarStatusFranquia, ListarAniversariantes };

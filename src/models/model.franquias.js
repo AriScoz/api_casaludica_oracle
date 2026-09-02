@@ -155,5 +155,19 @@ function AlternarStatusFranquia(id, status, callback) {
         }
     });
 }
-
-export default { ListarFranquias, ContarFranquias, ListarTipos, ObterProximoCodigo, CriarFranquia, ObterFranquiaPorId, AtualizarFranquia, AlternarStatusFranquia };
+function ListarAniversariantes(mes, callback) {
+    let ssql = `
+        SELECT nome_fantasia, cidade, uf, DAY(data_inauguracao) as dia
+        FROM franquias
+        WHERE MONTH(data_inauguracao) = ? AND status = 'ativa'
+        ORDER BY dia ASC
+    `;
+    db.query(ssql, [mes], function(err, result){
+        if (err){
+            callback(err, []);
+        } else {
+            callback(undefined, result);
+        }
+    });
+}
+export default { ListarFranquias, ContarFranquias, ListarTipos, ObterProximoCodigo, CriarFranquia, ObterFranquiaPorId, AtualizarFranquia, AlternarStatusFranquia, ListarAniversariantes };

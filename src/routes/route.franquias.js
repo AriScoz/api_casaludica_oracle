@@ -6,6 +6,7 @@ const routeFranquias = Router();
 
 routeFranquias.get("/franquias", controllerFranquias.ListarFranquias);
 routeFranquias.get("/franquias/tipos", controllerFranquias.ListarTipos);
+routeFranquias.get("/franquias/aniversarios", controllerFranquias.ListarAniversariantes);
 routeFranquias.get("/franquias/:id", controllerFranquias.ObterFranquia);
 routeFranquias.post("/franquias", verifyGerenteOuAdmin, controllerFranquias.CriarFranquia);
 routeFranquias.put("/franquias/:id", verifyGerenteOuAdmin, controllerFranquias.AtualizarFranquia);

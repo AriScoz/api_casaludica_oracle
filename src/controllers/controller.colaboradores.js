@@ -159,7 +159,22 @@ function UploadFoto(request, response) {
     stream.end(request.file.buffer);
 }
 
+function ListarAniversariantes(request, response) {
+    const mes = parseInt(request.query.mes) || (new Date().getMonth() + 1);
+
+    if (mes < 1 || mes > 12) {
+        return response.status(400).json({ error: 'Mês inválido' });
+    }
+
+    modelColaboradores.ListarAniversariantes(mes, function (err, colaboradores) {
+        if (err) {
+            return response.status(500).json({ error: 'Erro ao buscar aniversariantes' });
+        }
+        response.status(200).json(colaboradores);
+    });
+}
+
 export default {
     ListarColaboradores, CriarColaborador, ObterColaborador, AtualizarColaborador,
-    AlternarStatusColaborador, UploadFoto
+    AlternarStatusColaborador, UploadFoto, ListarAniversariantes
 };

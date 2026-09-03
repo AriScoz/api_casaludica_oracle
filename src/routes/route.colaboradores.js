@@ -8,6 +8,7 @@ const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 *
 const routeColaboradores = Router();
 
 routeColaboradores.get("/colaboradores", controllerColaboradores.ListarColaboradores);
+routeColaboradores.get("/colaboradores/aniversarios", controllerColaboradores.ListarAniversariantes);
 routeColaboradores.get("/colaboradores/:id", controllerColaboradores.ObterColaborador);
 routeColaboradores.post("/colaboradores", verifyGerenteOuAdmin, controllerColaboradores.CriarColaborador);
 routeColaboradores.put("/colaboradores/:id", verifyGerenteOuAdmin, controllerColaboradores.AtualizarColaborador);

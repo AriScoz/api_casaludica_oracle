@@ -10,6 +10,7 @@ import routeDocumentos from "./routes/route.documentos.js";
 import routeFornecedores from "./routes/route.fornecedores.js";
 import routeListas from "./routes/route.listas.js";
 import routeColaboradores from "./routes/route.colaboradores.js";
+import routeCalendario from "./routes/route.calendario.js";
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use(routeDocumentos);
 app.use(routeFornecedores);
 app.use(routeListas);
 app.use(routeColaboradores);
+app.use(routeCalendario);
 
 app.listen(PORT, () => {
     console.log("API Casa Ludica rodando na porta:", PORT);

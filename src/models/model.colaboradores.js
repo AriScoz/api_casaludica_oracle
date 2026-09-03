@@ -143,7 +143,22 @@ function AtualizarFotoColaborador(id, url, callback) {
     });
 }
 
+function ListarAniversariantes(mes, callback) {
+    let ssql = `
+        SELECT nome, DAY(data_nascimento) as dia
+        FROM colaboradores
+        WHERE MONTH(data_nascimento) = ? AND status = 'ativo'
+        ORDER BY dia ASC
+    `;
+    db.query(ssql, [mes], function(err, result){
+        if (err){
+            callback(err, []);
+        } else {
+            callback(undefined, result);
+        }
+    });
+}
 export default {
     ListarColaboradores, ContarColaboradores, ObterProximoCodigo, CriarColaborador,
-    ObterColaboradorPorId, AtualizarColaborador, AlternarStatusColaborador, AtualizarFotoColaborador
+    ObterColaboradorPorId, AtualizarColaborador, AlternarStatusColaborador, AtualizarFotoColaborador, ListarAniversariantes
 };
